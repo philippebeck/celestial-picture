@@ -1,0 +1,24 @@
+{
+  "name": "celestial-picture",
+  "description": "Celestial Pictures & Data from NASA",
+  "keywords": [
+    "web",
+    "application",
+    "php",
+    "mvc"
+  ],
+  "license": "MIT",
+  "main": "index.php",
+  "homepage": "https://celestial-picture.philippebeck.net",
+  "repository": "github:philippebeck/celestial-picture",
+  "bugs": "https://github.com/philippebeck/celestial-picture/issues",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "animadio": "2.4.4"
+  },
+  "author": {
+    "name": "Philippe Beck",
+    "email": "philippe@philippebeck.net",
+    "url": "https://philippebeck.net"
+  }
+}
