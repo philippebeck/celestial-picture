@@ -1,0 +1,58 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Mars{% endblock %}
+
+{% block description %}Mars Rover Photos{% endblock %}
+
+{% block main %}
+    <main>
+        <h2>{{ block("description") }}</h2>
+
+        <form class="form" method="post" action={{ url('mars') }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-robot fa-2x" aria-hidden="true"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="rover">Rover</label>
+                        <select id="rover" name="rover">
+                            <option value="curiosity">Curiosity</option>
+                            <option value="opportunity">Opportunity</option>
+                            <option value="spirit">Spirit</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="camera">Camera</label>
+                        <select id="camera" name="camera">
+                            <option value="fhaz">Front Hazard Avoidance Camera</option>
+                            <option value="rhaz">Rear Hazard Avoidance Camera</option>
+                            <option value="navcam">Navigation Camera</option>
+                            <option value="mast">Mast Camera (only available for Curiosity)</option>
+                            <option value="chemcam">Chemistry & Camera Complex (only available for Curiosity)</option>
+                            <option value="pancam">Panoramic Camera (not available for Curiosity)</option>
+                            <option value="minites">Miniature Thermal Emission Spectrometer (not available for Curiosity)</option>
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Search">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+
+        <figure class="grid-2sm-3lg">
+            {% for photo in mars %}
+                <figure>
+                    <img class="bord-curve" src="{{ photo["img_src"] }}" alt="Mars Rover Photo #{{ photo["id"] }}">
+                    <figcaption>{{ photo["camera"]["name"] }}</figcaption>
+                </figure>
+            {% endfor %}
+        </figure>
+
+        <p>Add website intro...</p>
+    </main>
+{% endblock %}
