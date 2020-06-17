@@ -1,0 +1,45 @@
+{
+  "name": "philippebeck/celestial-picture",
+  "version": "0.1.0",
+  "type": "project",
+  "description": "Celestial Pictures & Data from NASA",
+  "keywords": [
+    "web",
+    "application",
+    "php",
+    "mvc"
+  ],
+  "homepage": "https://celestial-picture.philippebeck.net",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Philippe Beck",
+      "email": "philippe@philippebeck.net",
+      "homepage": "https://philippebeck.net",
+      "role": "Lead Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "php": "7.3",
+    "philippebeck/pam": "^4.1.0"
+  },
+  "require-dev": {
+    "tracy/tracy": "^2.7.5"
+  },
+  "config": {
+    "platform": {
+      "php": "7.3"
+    }
+  },
+  "support": {
+    "email": "admin@philippebeck.net",
+    "issues": "https://github.com/philippebeck/celestial-picture/issues",
+    "wiki": "https://github.com/philippebeck/celestial-picture/wiki",
+    "source": "https://github.com/philippebeck/celestial-picture"
+  }
+}
