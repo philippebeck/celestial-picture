@@ -1,0 +1,56 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Hubble Telescope{% endblock %}
+
+{% block description %}Gallery of Hubble Pictures{% endblock %}
+
+{% block main %}
+    <main>
+        <h2>Welcome !</h2>
+
+        <form class="form" method="post" action={{ url('hubble') }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-satellite fa-2x" aria-hidden="true"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="collection">Collections</label>
+                        <select id="collection" name="collections">
+                            {% for collection in collections %}#}
+                            <option value="{{ collection }}">{{ cleanString(collection) }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <input type="reset" value="Reset">
+                        <input type="submit" value="Search">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+
+        <figure class="grid-2sm-3lg">
+            {% for picture in pictures %}
+             <figure>
+                 {#<pre>
+                     {{ dump(picture) }}
+                 </pre>#}
+
+                <a href="https:{{ picture["image_files"][2]["file_url"] }}" title="Clic to Watch in Full Size">
+                    <img class="bord-curve" src="https:{{ picture["image_files"][0]["file_url"] }}" alt="Photo of {{ picture["name"] }}">
+                </a>
+                <figcaption>
+                    <h3>{{ picture["name"] }}</h3>
+                    <p class="align-justify">{{ picture["description"] }}</p>
+                    <p>Credits : {{ picture["credits"]|raw }}</p>
+                </figcaption>
+            </figure>
+            {% endfor %}
+        </figure>
+
+        <p>Add website intro...</p>
+    </main>
+{% endblock %}
