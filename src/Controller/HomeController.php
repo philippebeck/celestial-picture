@@ -21,10 +21,8 @@ class HomeController extends MainController
      */
     public function defaultMethod()
     {
-        $apod = $this->service->getCurl()->getApiData(
-            "api.nasa.gov/planetary/apod",
-            "concept_tags=True"
-        );
+        $query  = "https://api.nasa.gov/planetary/apod?concept_tags=True&api_key=" . NASA_API;
+        $apod   = $this->service->getCurl()->getApiData($query);
 
         return $this->render("home.twig", ["apod" => $apod]);
     }

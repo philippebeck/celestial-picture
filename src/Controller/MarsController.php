@@ -29,11 +29,9 @@ class MarsController extends MainController
         $rover  = $this->getPost()->getPostVar("rover");
         $camera = $this->getPost()->getPostVar("camera");
 
-        $mars = $this->service->getCurl()->getApiData(
-            "api.nasa.gov/mars-photos/api/v1/rovers/" . $rover . "/photos",
-            "sol=1000&camera=" . $camera
-        );
+        $query = "https://api.nasa.gov/mars-photos/api/v1/rovers/" . $rover . "/photos?sol=1000&camera=" . $camera . "&api_key=" . NASA_API;
 
+        $mars = $this->service->getCurl()->getApiData($query);
         $mars = $mars["photos"];
 
         return $this->render("mars.twig", ["mars" => $mars]);

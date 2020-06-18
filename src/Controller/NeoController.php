@@ -29,11 +29,9 @@ class NeoController extends MainController
         $startDate  = $this->getPost()->getPostVar("start-date");
         $endDate    = $this->getPost()->getPostVar("end-date");
 
-        $neo = $this->service->getCurl()->getApiData(
-            "api.nasa.gov/neo/rest/v1/feed",
-            "start_date=" . $startDate . "&end_date=" . $endDate
-        );
+        $query = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" . $startDate . "&end_date=" . $endDate . "&api_key=" . NASA_API;
 
+        $neo = $this->service->getCurl()->getApiData($query);
         $neo = $neo["near_earth_objects"];
 
         return $this->render("neo.twig", ["neo" => $neo]);
