@@ -1,0 +1,37 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Hubble News{% endblock %}
+
+{% block description %}Hubble List of News Releases{% endblock %}
+
+{% block main %}
+<main>
+    <form class="form" method="post" action={{ url('hubble!news') }}>
+        <fieldset>
+            <legend>
+                <i class="far fa-newspaper fa-4x" aria-hidden="true"></i>
+            </legend>
+            <ul>
+                <li>
+                    <label for="page">Page (max 50)</label>
+                    <input id="page" name="page" type="number" min="1" max="50" placeholder="Type the Page Number" autofocus>
+                </li>
+                <li>
+                    <input type="submit" value="Search">
+                </li>
+            </ul>
+         </fieldset>
+    </form>
+
+    <ul>
+        {% for release in news %}
+        <li>
+            <form method="post" action={{ url('hubble!release') }}>
+                <input name="item" type="hidden" value="{{ release.news_id }}">
+                <input class="button-navy" type="submit" value="{{ release.name }}" title="Watch the Release {{ release.news_id }}">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}
