@@ -1,34 +1,31 @@
-{% extends '../layout/layout.twig' %}
+{% extends 'layout/layout.twig' %}
 
 {% block title %}Hubble Telescope{% endblock %}
 
-{% block description %}Hubble Data Selection{% endblock %}
+{% block description %}Hubble Data Type Selection{% endblock %}
 
 {% block main %}
-    <main>
-        <h2>Welcome !</h2>
+<main>
+    <ul class="row">
+        <li>
+            <a class="button-red btn-lg" href="{{ url('hubble!images') }}" title="Show Images">
+                <i class="far fa-image fa-2x"></i> Images
+            </a>
+        </li>
+        <li>
+            <a class="button-green btn-lg" href="{{ url('hubble!news') }}" title="Show News">
+                <i class="far fa-newspaper fa-2x"></i> News
+            </a>
+        </li>
+        <li>
+            <a class="button-blue btn-lg" href="{{ url('hubble!videos') }}" title="Show Videos">
+                <i class="fas fa-film fa-2x"></i> Videos
+            </a>
+        </li>
+    </ul>
 
-        <form class="form" method="post" action={{ url('hubble') }}>
-            <fieldset>
-                <legend>
-                    <i class="fas fa-satellite fa-2x" aria-hidden="true"></i>
-                </legend>
-                <ul>
-                    <li>
-                        <label for="type">Data Type</label>
-                        <select id="type" name="type">
-                            <option value="news">News</option>
-                            <option value="images">Images</option>
-                            <option value="videos">Videos</option>
-                            <option value="glossary">Glossary</option>
-                            <option value="external_feed">RSS Feeds</option>
-                        </select>
-                    </li>
-                    <li>
-                        <input type="submit" value="Search">
-                    </li>
-                </ul>
-            </fieldset>
-        </form>
-    </main>
+    <a class="button-purple" href="{{ url('hubble!glossary') }}" title="Show Glossary">
+        <i class="fas fa-journal-whills fa-2x"></i> Glossary
+    </a>
+</main>
 {% endblock %}
