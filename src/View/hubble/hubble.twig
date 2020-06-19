@@ -1,0 +1,34 @@
+{% extends '../layout/layout.twig' %}
+
+{% block title %}Hubble Telescope{% endblock %}
+
+{% block description %}Hubble Data Selection{% endblock %}
+
+{% block main %}
+    <main>
+        <h2>Welcome !</h2>
+
+        <form class="form" method="post" action={{ url('hubble') }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-satellite fa-2x" aria-hidden="true"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="type">Data Type</label>
+                        <select id="type" name="type">
+                            <option value="news">News</option>
+                            <option value="images">Images</option>
+                            <option value="videos">Videos</option>
+                            <option value="glossary">Glossary</option>
+                            <option value="external_feed">RSS Feeds</option>
+                        </select>
+                    </li>
+                    <li>
+                        <input type="submit" value="Search">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </main>
+{% endblock %}
