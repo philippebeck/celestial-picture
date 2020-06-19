@@ -1,0 +1,31 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Hubble Telescope{% endblock %}
+
+{% block description %}Hubble Data Type Selection{% endblock %}
+
+{% block main %}
+<main>
+    <ul class="row">
+        <li>
+            <a class="button-red btn-lg" href="{{ url('hubble!images') }}" title="Show Images">
+                <i class="far fa-image fa-2x"></i> Images
+            </a>
+        </li>
+        <li>
+            <a class="button-green btn-lg" href="{{ url('hubble!news') }}" title="Show News">
+                <i class="far fa-newspaper fa-2x"></i> News
+            </a>
+        </li>
+        <li>
+            <a class="button-blue btn-lg" href="{{ url('hubble!videos') }}" title="Show Videos">
+                <i class="fas fa-film fa-2x"></i> Videos
+            </a>
+        </li>
+    </ul>
+
+    <a class="button-purple" href="{{ url('hubble!glossary') }}" title="Show Glossary">
+        <i class="fas fa-journal-whills fa-2x"></i> Glossary
+    </a>
+</main>
+{% endblock %}
