@@ -1,6 +1,16 @@
+:root {
+  --sans-serif-font-family: 'Text Me One', sans-serif;
+  --serif-font-family: 'Cinzel', serif;
+  --monospace-font-family: 'Share Tech Mono', monospace;
+}
+
 body {
   text-align: center;
   background-color: var(--black);
   color: var(--white);
+}
+
+select {
+  font-family: var(--monospace-font-family);
 }
 
