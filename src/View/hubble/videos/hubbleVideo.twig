@@ -2,9 +2,15 @@
 
 {% block title %}Hubble Video{% endblock %}
 
-{% block description %}Video {{ video["id"] }} named {{ video["name"] }} from {{ video["mission"]|capitalize }} Mission{% endblock %}
+{% block description %}
+    Video {{ video["id"] }} named {{ video["name"] }} from {{ video["mission"]|capitalize }} Mission
+{% endblock %}
 
 {% block main %}
+    {% if not video %}
+        {{ redirect('hubble') }}
+    {% endif %}
+
     <main>
         <h2>{{ video["name"] }}</h2>
 
