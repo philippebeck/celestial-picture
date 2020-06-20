@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4eaef9620ec9b060b502a4a2a6988400",
+    "content-hash": "20f193bec223ec16605fc545ddbcd6d8",
     "packages": [
         {
             "name": "doctrine/lexer",
@@ -189,16 +189,16 @@
         },
         {
             "name": "philippebeck/pam",
-            "version": "4.1.1",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/philippebeck/pam.git",
-                "reference": "a6ea7461a6492df59d73c13033f068d32c4b49f3"
+                "reference": "f6645c64e3816f21680787e44e54b573fca1f72f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/philippebeck/pam/zipball/a6ea7461a6492df59d73c13033f068d32c4b49f3",
-                "reference": "a6ea7461a6492df59d73c13033f068d32c4b49f3",
+                "url": "https://api.github.com/repos/philippebeck/pam/zipball/f6645c64e3816f21680787e44e54b573fca1f72f",
+                "reference": "f6645c64e3816f21680787e44e54b573fca1f72f",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                 "superglobals",
                 "twig"
             ],
-            "time": "2020-06-18T17:24:55+00:00"
+            "time": "2020-06-20T10:23:16+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
