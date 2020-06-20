@@ -1,6 +1,6 @@
 {
   "name": "philippebeck/celestial-picture",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "project",
   "description": "Celestial Pictures & Data from NASA",
   "keywords": [
@@ -26,7 +26,7 @@
   },
   "require": {
     "php": "7.3",
-    "philippebeck/pam": "^4.1.0"
+    "philippebeck/pam": "^4.2.1"
   },
   "require-dev": {
     "tracy/tracy": "^2.7.5"

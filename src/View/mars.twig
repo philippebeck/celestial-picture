@@ -17,27 +17,30 @@
                     <li>
                         <label for="rover">Rover</label>
                         <select id="rover" name="rover">
-                            <option value="curiosity">Curiosity</option>
-                            <option value="opportunity">Opportunity</option>
-                            <option value="spirit">Spirit</option>
+                            <option value="curiosity">Curiosity : 2012 - 2026 (estimated)</option>
+                            <option value="opportunity">Opportunity : 2004 - 2018</option>
+                            <option value="spirit">Spirit : 2004 - 2010</option>
                         </select>
                     </li>
                     <li>
                         <label for="camera">Camera</label>
                         <select id="camera" name="camera">
-                            <option value="fhaz">Front Hazard Avoidance Camera</option>
-                            <option value="rhaz">Rear Hazard Avoidance Camera</option>
-                            <option value="navcam">Navigation Camera</option>
-                            <option value="mast">Mast Camera (only available for Curiosity)</option>
-                            <option value="chemcam">Chemistry & Camera Complex (only available for Curiosity)</option>
-                            <option value="pancam">Panoramic Camera (not available for Curiosity)</option>
-                            <option value="minites">Miniature Thermal Emission Spectrometer (not available for Curiosity)</option>
+                            <optgroup label="All Rovers">
+                                <option value="fhaz">Front Hazard Avoidance Camera</option>
+                                <option value="rhaz">Rear Hazard Avoidance Camera</option>
+                                <option value="navcam">Navigation Camera</option>
+                            </optgroup>
+                            <optgroup label="Curiosity Only">
+                                <option value="mast">Mast Camera</option>
+                                <option value="chemcam">Chemistry & Camera Complex</option>
+                            </optgroup>
+                            <optgroup label="Opportunity & Spirit Only">
+                                <option value="pancam">Panoramic Camera</option>
+                                <option value="minites">Miniature Thermal Emission Spectrometer</option>
+                            </optgroup>
                         </select>
                     </li>
-                </ul>
-                <ul>
                     <li>
-                        <input type="reset" value="Reset">
                         <input type="submit" value="Search">
                     </li>
                 </ul>
@@ -52,7 +55,5 @@
                 </figure>
             {% endfor %}
         </figure>
-
-        <p>Add website intro...</p>
     </main>
 {% endblock %}

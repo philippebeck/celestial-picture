@@ -2,9 +2,15 @@
 
 {% block title %}Hubble Image{% endblock %}
 
-{% block description %}Image {{ image["id"] }} named {{ image["name"] }} from {{ image["mission"]|capitalize }} Mission{% endblock %}
+{% block description %}
+    Image {{ image["id"] }} named {{ image["name"] }} from {{ image["mission"]|capitalize }} Mission
+{% endblock %}
 
 {% block main %}
+    {% if not image %}
+        {{ redirect('hubble') }}
+    {% endif %}
+
     <main>
         <h2>{{ image["name"] }}</h2>
 

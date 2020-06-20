@@ -46,15 +46,19 @@ class HubbleController extends MainController
 
     private function setItem()
     {
-        if (!empty($this->getPost()->getPostArray())) {
-            $this->item = "/" . $this->getPost()->getPostVar("item");
+        if (empty($this->getPost()->getPostArray())) {
+            $this->defaultMethod();
         }
+
+        $this->item = "/" . strval($this->getPost()->getPostVar("item"));
     }
 
     private function setPage()
     {
-        if (!empty($this->getPost()->getPostArray())) {
-            $this->page = "?page=" . $this->getPost()->getPostVar("page");
+        $this->page = "?page=1";
+
+        if (!empty($this->getGet()->getGetVar("page"))) {
+            $this->page = "?page=" . strval($this->getGet()->getGetVar("page"));
         }
     }
 
@@ -73,17 +77,12 @@ class HubbleController extends MainController
     {
         $this->type = "news";
 
-        if (empty($this->getPost()->getPostArray())) {
-
-            return $this->render("hubble/hubbleNews.twig");
-        }
-
         $this->setPage();
         $this->setQuery();
 
         $news = $this->service->getCurl()->getApiData($this->query);
 
-        return $this->render("hubble/hubbleNews.twig", ["news" => $news]);
+        return $this->render("hubble/news/hubbleNews.twig", ["news" => $news]);
     }
 
     /**
@@ -96,17 +95,12 @@ class HubbleController extends MainController
     {
         $this->type = "news_release";
 
-        if (empty($this->getPost()->getPostArray())) {
-
-            return $this->render("hubble/hubbleNews.twig");
-        }
-
         $this->setItem();
         $this->setQuery();
 
         $release = $this->service->getCurl()->getApiData($this->query);
 
-        return $this->render("hubble/hubbleRelease.twig", ["release" => $release]);
+        return $this->render("hubble/news/hubbleRelease.twig", ["release" => $release]);
     }
 
     /**
@@ -119,17 +113,12 @@ class HubbleController extends MainController
     {
         $this->type = "images";
 
-        if (empty($this->getPost()->getPostArray())) {
-
-            return $this->render("hubble/hubbleImages.twig");
-        }
-
         $this->setPage();
         $this->setQuery();
 
         $images = $this->service->getCurl()->getApiData($this->query);
 
-        return $this->render("hubble/hubbleImages.twig", ["images" => $images]);
+        return $this->render("hubble/images/hubbleImages.twig", ["images" => $images]);
     }
 
     /**
@@ -142,17 +131,12 @@ class HubbleController extends MainController
     {
         $this->type = "image";
 
-        if (empty($this->getPost()->getPostArray())) {
-
-            return $this->render("hubble/hubbleImages.twig");
-        }
-
         $this->setItem();
         $this->setQuery();
 
         $image = $this->service->getCurl()->getApiData($this->query);
 
-        return $this->render("hubble/hubbleImage.twig", ["image" => $image]);
+        return $this->render("hubble/images/hubbleImage.twig", ["image" => $image]);
     }
 
     /**
@@ -165,17 +149,12 @@ class HubbleController extends MainController
     {
         $this->type = "videos";
 
-        if (empty($this->getPost()->getPostArray())) {
-
-            return $this->render("hubble/hubbleVideos.twig");
-        }
-
         $this->setPage();
         $this->setQuery();
 
         $videos = $this->service->getCurl()->getApiData($this->query);
 
-        return $this->render("hubble/hubbleVideos.twig", ["videos" => $videos]);
+        return $this->render("hubble/videos/hubbleVideos.twig", ["videos" => $videos]);
     }
 
     /**
@@ -188,17 +167,12 @@ class HubbleController extends MainController
     {
         $this->type = "video";
 
-        if (empty($this->getPost()->getPostArray())) {
-
-            return $this->render("hubble/hubbleVideos.twig");
-        }
-
         $this->setItem();
         $this->setQuery();
 
         $video = $this->service->getCurl()->getApiData($this->query);
 
-        return $this->render("hubble/hubbleVideo.twig", ["video" => $video]);
+        return $this->render("hubble/videos/hubbleVideo.twig", ["video" => $video]);
     }
 
     /**
