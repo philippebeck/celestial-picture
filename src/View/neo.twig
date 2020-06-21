@@ -5,61 +5,61 @@
 {% block description %}Near Earth Object Web Service{% endblock %}
 
 {% block main %}
-<main>
-    <h2>Near Earth Object</h2>
+    <main>
+        <h2>Near Earth Object</h2>
 
-    <form class="form" method="post" action={{ url('neo') }}>
-        <fieldset>
-            <legend>
-                <i class="fas fa-meteor fa-2x" aria-hidden="true"></i>
-            </legend>
-            <ul>
-                <li>
-                    <label for="start-date">Start Date</label>
-                    <input id="start-date" name="start-date" type="date" placeholder="Choose a Start Date">
-                </li>
-                <li>
-                    <label for="end-date">End Date</label>
-                    <input id="end-date" name="end-date" type="date" placeholder="Choose a End Date">
-                </li>
-                <li>
-                    <input type="submit" value="Search">
-                </li>
-            </ul>
-        </fieldset>
-    </form>
+        <form class="form" method="post" action={{ url('neo') }}>
+            <fieldset>
+                <legend>
+                    <i class="fas fa-meteor fa-2x" aria-hidden="true"></i>
+                </legend>
+                <ul>
+                    <li>
+                        <label for="start-date">Start Date</label>
+                        <input id="start-date" name="start-date" type="date" placeholder="Choose a Start Date">
+                    </li>
+                    <li>
+                        <label for="end-date">End Date</label>
+                        <input id="end-date" name="end-date" type="date" placeholder="Choose a End Date">
+                    </li>
+                    <li>
+                        <input type="submit" value="Search">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
 
-    {% for day in neo|keys %}
-        <section>
-            <h3>{{ day }}</h3>
+        {% for day in neo|keys %}
+            <section>
+                <h3>{{ day }}</h3>
 
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Distance (km)</th>
-                    <th>Diameter (m)</th>
-                    <th>Speed (km/h)</th>
-                    <th>Magnitude (a)</th>
-                    <th>Danger</th>
-                    <th>JPL SBDB</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for object in neo[day] %}
-                <tr>
-                    <td>{{ object["name"] }}</td>
-                    <td>{{ object["close_approach_data"][0]["miss_distance"]["kilometers"]|number_format(0, '.', ' ') }}</td>
-                    <td>{{ object["estimated_diameter"]["meters"]["estimated_diameter_min"]|number_format(0, '.', ' ') }} < {{ object["estimated_diameter"]["meters"]["estimated_diameter_max"]|number_format(0, '.', ' ') }}</td>
-                    <td>{{ object["close_approach_data"][0]["relative_velocity"]["kilometers_per_hour"]|number_format(0, '.', ' ') }}</td>
-                    <td>{{ object["absolute_magnitude_h"] }}</td>
-                    <td>{{ dump(object["is_potentially_hazardous_asteroid"])|replace({'bool(false)': "No", 'bool(true)': "Yes"}) }}</td>
-                    <td><a class="button-navy" href="{{ object["nasa_jpl_url"] }}" title="Watch the Jet Propulsion Laboratory Small-Body Database Browser">JPL Page</a></td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </section>
-    {% endfor %}
-</main>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Distance (km)</th>
+                        <th>Diameter (m)</th>
+                        <th>Speed (km/h)</th>
+                        <th>Magnitude (a)</th>
+                        <th>Danger</th>
+                        <th>JPL SBDB</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in neo[day] %}
+                        <tr>
+                            <td>{{ object["name"] }}</td>
+                            <td>{{ object["close_approach_data"][0]["miss_distance"]["kilometers"]|number_format(0, '.', ' ') }}</td>
+                            <td>{{ object["estimated_diameter"]["meters"]["estimated_diameter_min"]|number_format(0, '.', ' ') }} < {{ object["estimated_diameter"]["meters"]["estimated_diameter_max"]|number_format(0, '.', ' ') }}</td>
+                            <td>{{ object["close_approach_data"][0]["relative_velocity"]["kilometers_per_hour"]|number_format(0, '.', ' ') }}</td>
+                            <td>{{ object["absolute_magnitude_h"] }}</td>
+                            <td>{{ dump(object["is_potentially_hazardous_asteroid"])|replace({'bool(false)': "No", 'bool(true)': "Yes"}) }}</td>
+                            <td><a class="button-navy" href="{{ object["nasa_jpl_url"] }}" title="Watch the Jet Propulsion Laboratory Small-Body Database Browser">JPL Page</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endfor %}
+    </main>
 {% endblock %}

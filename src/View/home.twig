@@ -5,14 +5,14 @@
 {% block description %}Homepage of Celestial Picture{% endblock %}
 
 {% block main %}
-<main>
-    <h2>Welcome !</h2>
+    <main>
+        <h2>Welcome !</h2>
 
-    <figure>
-        <a href="{{ apod["hdurl"] }}" title="Clic to See in HD !">
-            <img class="bord-curve" src="{{ apod["url"] }}" alt="Astronomy Picture Of the Day">
-        </a>
-        <figcaption>{{ apod["title"] }}</figcaption>
-    </figure>
-</main>
+        <figure>
+            <a href="{{ apod["hdurl"] }}" title="Clic to See in HD !">
+                <img class="bord-curve" src="{{ apod["url"] }}" alt="Astronomy Picture Of the Day">
+            </a>
+            <figcaption>{{ apod["title"] }}</figcaption>
+        </figure>
+    </main>
 {% endblock %}
