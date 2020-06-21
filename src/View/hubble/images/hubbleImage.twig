@@ -26,6 +26,8 @@
             <li>Mission : {{ image["mission"]|capitalize }}</li>
         </ul>
 
-        <p>Credits : {{ image["credits"]|raw }}</p>
+        {% if image["credits"] %}
+            <p>Credits : {{ image["credits"]|raw }}</p>
+        {% endif %}
     </main>
 {% endblock %}
