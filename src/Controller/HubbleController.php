@@ -126,7 +126,7 @@ class HubbleController extends MainController
      * @param string $pattern
      * @return array
      */
-    public function filterFile(array $image, string $pattern)
+    private function filterFile(array $image, string $pattern)
     {
         $file = implode(preg_grep($pattern, array_column($image["image_files"], "file_url")));
 
@@ -142,7 +142,7 @@ class HubbleController extends MainController
      * @param array $image
      * @return array
      */
-    public function filterFiles(array $image)
+    private function filterFiles(array $image)
     {
         $image =
             $this->filterFile(
