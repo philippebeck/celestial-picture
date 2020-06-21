@@ -15,8 +15,8 @@
         <h2>{{ image["name"] }}</h2>
 
         <figure>
-            <a href="https:{{ image["image_files"][2]["file_url"] }}" title="Clic to Watch in Full Size">
-                <img class="bord-curve" src="https:{{ image["image_files"][0]["file_url"] }}" alt="Thumbnail of the Image {{ image["id"] }}">
+            <a href="https:{{ image["image_files"]|last }}" title="Clic to Watch in Full Size">
+                <img class="bord-curve" src="https:{{ image["image_files"]|first }}" alt="Thumbnail of the Image {{ image["id"] }}">
             </a>
             <figcaption class="align-justify">{{ image["description"]|raw }}</figcaption>
         </figure>
