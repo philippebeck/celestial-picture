@@ -9,20 +9,20 @@
         {{ redirect('hubble') }}
     {% endif %}
 
-<main>
-    {{ include("hubble/images/imagesPagination.twig") }}
+    <main>
+        {{ include("hubble/images/imagesPagination.twig") }}
 
-    <ul>
-        {% for image in images %}
-        <li>
-            <form method="post" action={{ url('hubble!image') }}>
-                <input name="item" type="hidden" value="{{ image.id }}">
-                <input class="button-navy" type="submit" value="{{ image.name }}" title="Watch the Image {{ image.id }}">
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for image in images %}
+                <li>
+                    <form method="post" action={{ url('hubble!image') }}>
+                        <input name="item" type="hidden" value="{{ image.id }}">
+                        <input class="button-navy" type="submit" value="{{ image.name }}" title="Watch the Image {{ image.id }}">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
 
-    {{ include("hubble/images/imagesPagination.twig") }}
-</main>
+        {{ include("hubble/images/imagesPagination.twig") }}
+    </main>
 {% endblock %}
