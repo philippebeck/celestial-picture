@@ -16,8 +16,8 @@
 
         <figure>
             <video class="bord-curve" controls>
-                <source src="{{ video["html_5_video"]["video_url"] }}" type="video/mp4">
-                <p>Sorry, your browser doesn't support embedded videos. <a href="{{ video["html_5_video"]["video_url"] }}">Here you can download it !</a></p>
+                <source src="{{ video["video_files"]|last }}" type="video/mp4">
+                <p>Sorry, your browser doesn't support embedded videos. <a href="{{ video["video_files"]|last }}">Here you can download it !</a></p>
             </video>
             <figcaption class="align-justify">{{ video["short_description"]|raw }}</figcaption>
         </figure>
@@ -27,6 +27,8 @@
             <li>Mission : {{ video["mission"]|capitalize }}</li>
         </ul>
 
-        <p>Credits : {{ video["credits"]|raw }}</p>
+        {% if video["credits"] %}
+            <p>Credits : {{ video["credits"]|raw }}</p>
+        {% endif %}
     </main>
 {% endblock %}

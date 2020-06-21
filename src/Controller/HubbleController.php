@@ -122,6 +122,50 @@ class HubbleController extends MainController
     }
 
     /**
+     * @param array $image
+     * @param string $pattern
+     * @return array
+     */
+    private function filterFile(array $image, string $pattern)
+    {
+        $file = implode(preg_grep($pattern, array_column($image["image_files"], "file_url")));
+
+        if ($file !== "") {
+            $fileId = array_search($file, array_column($image["image_files"], "file_url"));
+            array_splice($image["image_files"], $fileId, 1);
+        }
+
+        return $image;
+    }
+
+    /**
+     * @param array $image
+     * @return array
+     */
+    private function filterFiles(array $image)
+    {
+        $image =
+            $this->filterFile(
+                $this->filterFile(
+                    $this->filterFile(
+                        $this->filterFile(
+                            $this->filterFile(
+                                $this->filterFile(
+                                    $image,
+                                    "/mini_thumb/"),
+                                "/thumb/"),
+                            "/small_web/"),
+                        "/.pdf/"),
+                    "/.tif/"),
+                "/bw_/")
+        ;
+
+        $image["image_files"] = array_column($image["image_files"], "file_url");
+
+        return $image;
+    }
+
+    /**
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
@@ -135,6 +179,7 @@ class HubbleController extends MainController
         $this->setQuery();
 
         $image = $this->service->getCurl()->getApiData($this->query);
+        $image = $this->filterFiles($image);
 
         return $this->render("hubble/images/hubbleImage.twig", ["image" => $image]);
     }
@@ -171,6 +216,7 @@ class HubbleController extends MainController
         $this->setQuery();
 
         $video = $this->service->getCurl()->getApiData($this->query);
+        $video["video_files"] = array_column($video["video_files"], "file_url");
 
         return $this->render("hubble/videos/hubbleVideo.twig", ["video" => $video]);
     }

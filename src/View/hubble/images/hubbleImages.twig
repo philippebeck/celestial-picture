@@ -5,20 +5,24 @@
 {% block description %}Hubble List of Images{% endblock %}
 
 {% block main %}
-<main>
-    {{ include("hubble/images/imagesPagination.twig") }}
+    {% if not images %}
+        {{ redirect('hubble') }}
+    {% endif %}
 
-    <ul>
-        {% for image in images %}
-        <li>
-            <form method="post" action={{ url('hubble!image') }}>
-                <input name="item" type="hidden" value="{{ image.id }}">
-                <input class="button-navy" type="submit" value="{{ image.name }}" title="Watch the Image {{ image.id }}">
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
+    <main>
+        {{ include("hubble/images/imagesPagination.twig") }}
 
-    {{ include("hubble/images/imagesPagination.twig") }}
-</main>
+        <ul>
+            {% for image in images %}
+                <li>
+                    <form method="post" action={{ url('hubble!image') }}>
+                        <input name="item" type="hidden" value="{{ image.id }}">
+                        <input class="button-navy" type="submit" value="{{ image.name }}" title="Watch the Image {{ image.id }}">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {{ include("hubble/images/imagesPagination.twig") }}
+    </main>
 {% endblock %}

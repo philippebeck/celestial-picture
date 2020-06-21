@@ -5,20 +5,24 @@
 {% block description %}Hubble List of News Releases{% endblock %}
 
 {% block main %}
-<main>
-    {{ include("hubble/news/newsPagination.twig") }}
+    {% if not news %}
+        {{ redirect('hubble') }}
+    {% endif %}
 
-    <ul>
-        {% for release in news %}
-        <li>
-            <form method="post" action={{ url('hubble!release') }}>
-                <input name="item" type="hidden" value="{{ release.news_id }}">
-                <input class="button-navy" type="submit" value="{{ release.name }}" title="Watch the Release {{ release.news_id }}">
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
+    <main>
+        {{ include("hubble/news/newsPagination.twig") }}
 
-    {{ include("hubble/news/newsPagination.twig") }}
-</main>
+        <ul>
+            {% for release in news %}
+                <li>
+                    <form method="post" action={{ url('hubble!release') }}>
+                        <input name="item" type="hidden" value="{{ release.news_id }}">
+                        <input class="button-navy" type="submit" value="{{ release.name }}" title="Watch the Release {{ release.news_id }}">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {{ include("hubble/news/newsPagination.twig") }}
+    </main>
 {% endblock %}

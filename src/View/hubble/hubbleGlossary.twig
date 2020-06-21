@@ -5,14 +5,18 @@
 {% block description %}Hubble List of Terms{% endblock %}
 
 {% block main %}
-<main>
-    <ul>
-        {% for term in glossary %}
-            <li>
-                <p>{{ term.name }}</p>
-                <p>{{ term.definition }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-</main>
+    {% if not glossary %}
+        {{ redirect('hubble') }}
+    {% endif %}
+
+    <main>
+        <ul>
+            {% for term in glossary %}
+                <li>
+                    <p>{{ term.name }}</p>
+                    <p>{{ term.definition }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 {% endblock %}

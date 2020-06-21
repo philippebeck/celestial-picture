@@ -31,6 +31,8 @@
             <li>Mission : {{ release["mission"]|capitalize }}</li>
         </ul>
 
-        <p>Credits : {{ release["credits"]|raw }}</p>
+        {% if release["credits"] %}
+            <p>Credits : {{ release["credits"]|raw }}</p>
+        {% endif %}
     </main>
 {% endblock %}
