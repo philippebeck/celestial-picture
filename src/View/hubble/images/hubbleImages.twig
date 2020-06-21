@@ -5,6 +5,10 @@
 {% block description %}Hubble List of Images{% endblock %}
 
 {% block main %}
+    {% if not images %}
+        {{ redirect('hubble') }}
+    {% endif %}
+
 <main>
     {{ include("hubble/images/imagesPagination.twig") }}
 

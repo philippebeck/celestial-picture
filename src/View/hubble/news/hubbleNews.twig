@@ -5,6 +5,10 @@
 {% block description %}Hubble List of News Releases{% endblock %}
 
 {% block main %}
+    {% if not news %}
+        {{ redirect('hubble') }}
+    {% endif %}
+
 <main>
     {{ include("hubble/news/newsPagination.twig") }}
 
