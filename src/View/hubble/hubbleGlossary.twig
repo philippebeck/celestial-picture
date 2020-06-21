@@ -5,6 +5,10 @@
 {% block description %}Hubble List of Terms{% endblock %}
 
 {% block main %}
+    {% if not glossary %}
+        {{ redirect('hubble') }}
+    {% endif %}
+
 <main>
     <ul>
         {% for term in glossary %}
