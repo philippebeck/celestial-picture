@@ -44,18 +44,19 @@ class NeoController extends MainController
      */
     public function defaultMethod()
     {
-        if (empty($this->getPost()->getPostArray())) {
+        $this->setDates();
 
-            return $this->render("neo.twig");
-        }
-
-        $startDate  = $this->getPost()->getPostVar("start-date");
-        $endDate    = $this->getPost()->getPostVar("end-date");
-
-        $query = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" . $startDate . "&end_date=" . $endDate . "&api_key=" . NASA_API;
+        $query = "https://api.nasa.gov/neo/rest/v1/feed?start_date="
+            . $this->startDate
+            . "&end_date="
+            . $this->endDate
+            . "&api_key="
+            . NASA_API;
 
         $neo = $this->service->getCurl()->getApiData($query);
         $neo = $neo["near_earth_objects"];
+
+        ksort($neo);
 
         return $this->render("neo.twig", ["neo" => $neo]);
     }
