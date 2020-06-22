@@ -14,6 +14,43 @@ use Twig\Error\SyntaxError;
 class MarsController extends MainController
 {
     /**
+     * @var null
+     */
+    private $rover = "curiosity";
+
+    /**
+     * @var null
+     */
+    private $camera = "navcam";
+
+    /**
+     * @var null
+     */
+    private $date = null;
+
+    /**
+     * @var null
+     */
+    private $page = 1;
+
+    private function setDate()
+    {
+        if ($this->date === null) {
+            $this->date = date("Y-m-d", strtotime("-1 week"));
+        }
+    }
+
+    private function getParams()
+    {
+        if (!empty($this->getPost()->getPostArray())) {
+            $this->rover    = (string) $this->getPost()->getPostVar("rover");
+            $this->camera   = (string) $this->getPost()->getPostVar("camera");
+            $this->date     = (string) $this->getPost()->getPostVar("date");
+            $this->page     = (string) $this->getPost()->getPostVar("page");
+        }
+    }
+
+    /**
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
