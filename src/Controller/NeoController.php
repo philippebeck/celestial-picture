@@ -14,6 +14,29 @@ use Twig\Error\SyntaxError;
 class NeoController extends MainController
 {
     /**
+     * @var null
+     */
+    private $startDate = null;
+
+    /**
+     * @var null
+     */
+    private $endDate = null;
+
+    private function setDates()
+    {
+        if ($this->startDate === null || $this->endDate === null) {
+            $this->startDate    = date("Y-m-d");
+            $this->endDate      = date("Y-m-d", strtotime("+2 day"));
+        }
+
+        if (!empty($this->getPost()->getPostArray())) {
+            $this->startDate    = $this->getPost()->getPostVar("start-date");
+            $this->endDate      = $this->getPost()->getPostVar("end-date");
+        }
+    }
+
+    /**
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
