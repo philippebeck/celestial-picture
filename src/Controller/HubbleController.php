@@ -41,7 +41,14 @@ class HubbleController extends MainController
      */
     public function defaultMethod()
     {
-        return $this->render("hubble/hubble.twig");
+        $this->type = "news_release";
+        $this->item = "/last";
+
+        $this->setQuery();
+
+        $hubble = $this->service->getCurl()->getApiData($this->query);
+
+        return $this->render("hubble/hubble.twig", ["hubble" => $hubble]);
     }
 
     private function setItem()
