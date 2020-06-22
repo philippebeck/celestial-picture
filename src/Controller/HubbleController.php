@@ -50,7 +50,7 @@ class HubbleController extends MainController
             $this->defaultMethod();
         }
 
-        $this->item = "/" . strval($this->getPost()->getPostVar("item"));
+        $this->item = "/" . (string) $this->getPost()->getPostVar("item");
     }
 
     private function setPage()
@@ -58,7 +58,7 @@ class HubbleController extends MainController
         $this->page = "?page=1";
 
         if (!empty($this->getGet()->getGetVar("page"))) {
-            $this->page = "?page=" . strval($this->getGet()->getGetVar("page"));
+            $this->page = "?page=" . (string) $this->getGet()->getGetVar("page");
         }
     }
 
