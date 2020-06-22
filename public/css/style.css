@@ -10,7 +10,10 @@ body {
   color: var(--white);
 }
 
+.navbar {
+  --navbar-background-color: var(--blue-dark);
+}
+
 select {
   font-family: var(--monospace-font-family);
 }
-
