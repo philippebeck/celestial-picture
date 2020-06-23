@@ -210,6 +210,35 @@ class HubbleController extends MainController
     }
 
     /**
+     * @param array $video
+     * @param string $pattern
+     * @return array
+     */
+    private function filterVideo(array $video, string $pattern)
+    {
+        $file = implode(preg_grep($pattern, array_column($video["video_files"], "file_url")));
+
+        if ($file !== "") {
+            $fileId = array_search($file, array_column($video["video_files"], "file_url"));
+            $video["video_files"] = array_slice($video["video_files"], $fileId, 1);
+        }
+
+        return $video;
+    }
+
+    /**
+     * @param array $video
+     * @return mixed
+     */
+    private function filterVideos(array $video)
+    {
+        $video = $this->filterVideo($video,"/.mp4/");
+        $video["video_files"] = array_column($video["video_files"], "file_url");
+
+        return $video;
+    }
+
+    /**
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
