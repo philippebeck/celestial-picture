@@ -133,7 +133,7 @@ class HubbleController extends MainController
      * @param string $pattern
      * @return array
      */
-    private function filterFile(array $image, string $pattern)
+    private function filterImage(array $image, string $pattern)
     {
         $file = implode(preg_grep($pattern, array_column($image["image_files"], "file_url")));
 
@@ -149,15 +149,15 @@ class HubbleController extends MainController
      * @param array $image
      * @return array
      */
-    private function filterFiles(array $image)
+    private function filterImages(array $image)
     {
         $image =
-            $this->filterFile(
-                $this->filterFile(
-                    $this->filterFile(
-                        $this->filterFile(
-                            $this->filterFile(
-                                $this->filterFile(
+            $this->filterImage(
+                $this->filterImage(
+                    $this->filterImage(
+                        $this->filterImage(
+                            $this->filterImage(
+                                $this->filterImage(
                                     $image,
                                     "/mini_thumb/"),
                                 "/thumb/"),
@@ -186,7 +186,7 @@ class HubbleController extends MainController
         $this->setQuery();
 
         $image = $this->service->getCurl()->getApiData($this->query);
-        $image = $this->filterFiles($image);
+        $image = $this->filterImages($image);
 
         return $this->render("hubble/images/hubbleImage.twig", ["image" => $image]);
     }
@@ -252,7 +252,7 @@ class HubbleController extends MainController
         $this->setQuery();
 
         $video = $this->service->getCurl()->getApiData($this->query);
-        $video["video_files"] = array_column($video["video_files"], "file_url");
+        $video = $this->filterVideos($video);
 
         return $this->render("hubble/videos/hubbleVideo.twig", ["video" => $video]);
     }
