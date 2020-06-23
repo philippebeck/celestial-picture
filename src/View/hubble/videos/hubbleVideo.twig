@@ -16,8 +16,13 @@
 
         <figure>
             <video class="bord-curve" controls>
-                <source src="{{ video["video_files"]|last }}" type="video/mp4">
-                <p>Sorry, your browser doesn't support embedded videos. <a href="{{ video["video_files"]|last }}">Here you can download it !</a></p>
+                {% if video["html_5_video"] %}
+                    <source src="{{ video["html_5_video"]["video_url"] }}" type="video/mp4">
+                    <p>Sorry, your browser doesn't support embedded videos. <a href="{{ video["html_5_video"]["video_url"] }}">Here you can download it !</a></p>
+                {% else %}
+                    <source src="{{ video["video_files"]|first }}" type="video/mp4">
+                    <p>Sorry, your browser doesn't support embedded videos. <a href="{{ video["video_files"]|first }}">Here you can download it !</a></p>
+                {% endif %}
             </video>
             <figcaption class="align-justify">{{ video["short_description"]|raw }}</figcaption>
         </figure>
