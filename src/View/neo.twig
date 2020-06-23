@@ -16,11 +16,11 @@
                 <ul>
                     <li>
                         <label for="start-date">Start Date</label>
-                        <input id="start-date" name="start-date" type="date" placeholder="Choose a Start Date">
+                        <input id="start-date" name="start-date" type="date">
                     </li>
                     <li>
                         <label for="end-date">End Date</label>
-                        <input id="end-date" name="end-date" type="date" placeholder="Choose a End Date">
+                        <input id="end-date" name="end-date" type="date">
                     </li>
                     <li>
                         <input type="submit" value="Search">
@@ -36,13 +36,13 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Distance (km)</th>
-                        <th>Diameter (m)</th>
-                        <th>Speed (km/h)</th>
-                        <th>Magnitude (a)</th>
-                        <th>Danger</th>
-                        <th>JPL SBDB</th>
+                        <th>Object Name</th>
+                        <th>Miss Distance (km)</th>
+                        <th>Estimated Diameter (m)</th>
+                        <th>Relative Velocity (km/h)</th>
+                        <th>Absolute Magnitude</th>
+                        <th>Potentially Hazardous</th>
+                        <th>JPL</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,11 @@
                             <td>{{ object["close_approach_data"][0]["relative_velocity"]["kilometers_per_hour"]|number_format(0, '.', ' ') }}</td>
                             <td>{{ object["absolute_magnitude_h"] }}</td>
                             <td>{{ dump(object["is_potentially_hazardous_asteroid"])|replace({'bool(false)': "No", 'bool(true)': "Yes"}) }}</td>
-                            <td><a class="button-navy" href="{{ object["nasa_jpl_url"] }}" title="Watch the Jet Propulsion Laboratory Small-Body Database Browser">JPL Page</a></td>
+                            <td>
+                                <a class="button-navy" href="{{ object["nasa_jpl_url"] }}" title="Watch the Jet Propulsion Laboratory Small-Body Database Browser">
+                                    <i class="fas fa-database fa-2x"></i>
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
