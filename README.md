@@ -4,9 +4,6 @@ Celestial Pictures & Data from Nasa !
 
 Warning : Project merge with [Celestial Atlas](https://github.com/philippebeck/celestial-atlas) to [Astronomy](https://github.com/philippebeck/astronomy) !
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c1368280b7c44bfb9d1d9bb9fa4d8247)](https://www.codacy.com/manual/philippebeck/celestial-picture?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=philippebeck/celestial-picture&amp;utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e63be2de68385af9925e/maintainability)](https://codeclimate.com/github/philippebeck/celestial-picture/maintainability)
-
 ---
 
 ## Download
